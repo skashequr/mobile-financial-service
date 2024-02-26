@@ -13,8 +13,9 @@ const Registration = () => {
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
+  const [errorMessage,setErrorMessage] = useState("");
   const axiosPublic = useAxiosPublic([]);
-  const registrationHandaler = (e) => {
+  const registrationHandler = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const pin = e.target.password.value;
@@ -22,30 +23,39 @@ const Registration = () => {
     const number = e.target.number.value;
     const nid = e.target.nid.value;
     const userInfo = {
-      name,pin,email,number,nid,selectedItem
-    }
+      name, pin, email, number, nid, selectedItem
+    };
+  
     axiosPublic.post("/users", userInfo)
-  .then(response => {
-    console.log("User added successfully:", response.data);
-    // Handle success
-  })
-  .catch(error => {
-    console.error("Error adding user:", error);
-    // Handle error
-  });
-    createUser(email,pin)
-    .then((userCredential) => { 
-      const user = userCredential.user;
-      user && navigate("/");
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-    // console.log(name, password, email , nid , number);
+      .then(response => {
+        console.log("User added successfully:", response.data);
+        // Handle success
+        createUser(email, pin)
+          .then((userCredential) => { 
+            const user = userCredential.user;
+            user && navigate("/");
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            console.error(errorMessage);
+            // Handle error
+          });
+      })
+      .catch(error => {
+        // Handle error
+        if (error.response.status === 405) {
+          setErrorMessage("This Email Already Exists");
+        } else if (error.response.status === 400) {
+          setErrorMessage("This NID already exists");
+        } else if (error.response.status === 406) {
+          setErrorMessage("This Mobile Number already exists");
+        } else {
+          setErrorMessage(error.response.data);
+        }
+      });
   };
+  
   return (
     <div>
       <style>
@@ -94,7 +104,7 @@ const Registration = () => {
                     Sign In
                   </h2>
 
-                  <form onSubmit={registrationHandaler}>
+                  <form onSubmit={registrationHandler}>
                     <div className="flex items-center justify-center -mx-2 sm:mt-0">
                       <a
                         href="#"
@@ -146,7 +156,9 @@ const Registration = () => {
                         placeholder="PIN"
                         aria-label="Password"
                       />
+                      <p>{errorMessage}</p>
                      <div className="flex items-center justify-between">
+                    
                       <div>
                       <Dropdown
                         label="Dropdown button"
