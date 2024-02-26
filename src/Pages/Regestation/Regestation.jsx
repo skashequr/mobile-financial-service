@@ -3,9 +3,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/axiousPublic";
-
+import { toast } from 'react-toastify';
 const Registration = () => {
   const navigate = useNavigate();
+  const notify = () => toast("Sucessfully Signup done");
   // const {registration} = useContext(AuthContext);
   const {createUser} = useContext(AuthContext);
   console.log(createUser);
@@ -16,6 +17,7 @@ const Registration = () => {
   const [errorMessage,setErrorMessage] = useState("");
   const axiosPublic = useAxiosPublic([]);
   const registrationHandler = (e) => {
+    
     e.preventDefault();
     const name = e.target.name.value;
     const pin = e.target.password.value;
@@ -35,6 +37,7 @@ const Registration = () => {
             const user = userCredential.user;
             user && navigate("/");
             console.log(user);
+            notify();
           })
           .catch((error) => {
             const errorMessage = error.message;
