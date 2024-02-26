@@ -1,41 +1,29 @@
-
 const Hero = () => {
   return (
+    // <div>                             https://i.ibb.co/NCjMz2R/45106.jpg
     <div>
-      <section className="relative bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat">
+      <section className="relative bg-[url(https://i.ibb.co/NLQy27w/6242199.jpg)] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
 
         <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-[600px] lg:items-center lg:px-8">
-          <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-            <h1 className="text-3xl font-extrabold sm:text-5xl">
-              Let us find your
-              <strong className="block font-extrabold text-rose-700">
-                {" "}
-                Forever Home.{" "}
-              </strong>
-            </h1>
-
-            <p className="mt-4 max-w-lg sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4 text-center">
-              <a
-                href="#"
-                className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
-              >
-                Get Started
-              </a>
-
-              <a
-                href="#"
-                className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
-              >
-                Learn More
-              </a>
+          <section className="dark:bg-gray-800 dark:text-gray-100">
+            <div className="container mx-auto flex flex-col  items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
+              <h1 className="text-4xl bg-gradient-to-tl from-green-600 to-indigo-600 bg-clip-text text-transparent  font-bold leadi sm:text-5xl">
+                Degital finance service of Bangladesh <br></br>
+                <span className="dark:text-violet-400"> </span>
+                Lets Join Us
+              </h1>
+              
+              <div className="flex flex-wrap justify-center">
+                <button className="px-8 py-3 bg-green-500 m-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
+                  Get started
+                </button>
+                <button className="px-8 py-3 m-2 text-lg bg-indigo-500 border rounded dark:text-gray-50 dark:border-gray-700">
+                  Learn more
+                </button>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
       </section>
     </div>
