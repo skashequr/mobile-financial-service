@@ -6,6 +6,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import LoginPage from "../Pages/LoginPAge/LoginPage";
 import Regestation from "../Pages/Regestation/Regestation";
+import SendMoney from "../Pages/SendMoney/SendMoney";
 
  export const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ import Regestation from "../Pages/Regestation/Regestation";
         },
         {
           path: "/about"
+        },
+        {
+          path: "/sendMoney",
+          element: <SendMoney></SendMoney>
         },
         {
           path: "/login",
